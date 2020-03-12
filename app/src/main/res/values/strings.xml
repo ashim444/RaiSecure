@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">RaiSecure</string>
+
+    <string name="web_login">Web Log in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="password_again">Password Again</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create \nAccount</string>
+    <string name="enter_pin_code">Please enter your PIN code</string>
+    <string name="secrets_note">Secrets Notes</string>
+
+    <string name="logout">Logout</string>
+    <string name="change_pin">Change pin</string>
+    <string name="delete">Delete</string>
+
+    <string name="pin_heading">Change Pin</string>
+    <string name="pin_heading_two">Confirm Pin</string>
+
+    <string name="pin_set">Set your Pin</string>
+    <string name="pin_old_text">Confirm your old pin</string>
+    <string name="pin_confirm">Confirm  your pin</string>
+
+    <string name="pin_edit_error">Pin Cannot be Less then 4 digits</string>
+    <string name="pin_confirm_error">Pin must be same as before</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="pin_set_success">Pin Set successful</string>
+    <string name="pin_set_success_info">Now you can use your Pin to login</string>
+
+</resources>
