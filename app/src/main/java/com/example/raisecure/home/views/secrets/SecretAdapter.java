@@ -18,9 +18,13 @@ public class SecretAdapter extends RecyclerView.Adapter<SecretAdapter.ViewHolder
     private List<Secret> secretList;
     private onSecretItemClickListener listener;
 
-    public SecretAdapter(List<Secret> secretList, onSecretItemClickListener listener) {
-        this.secretList = secretList;
+    public SecretAdapter(onSecretItemClickListener listener) {
+
         this.listener = listener;
+    }
+
+    public void setData(List<Secret> secretList) {
+        this.secretList = secretList;
     }
 
     @NonNull
@@ -32,7 +36,7 @@ public class SecretAdapter extends RecyclerView.Adapter<SecretAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(secretList.get(holder.getAdapterPosition()));
+        holder.bind(secretList.get(holder.getAdapterPosition()), holder.getAdapterPosition());
         holder.itemView.setOnClickListener(v -> listener.onSecretItemClick(secretList.get(holder.getAdapterPosition()).getSecretId()));
     }
 
@@ -44,7 +48,7 @@ public class SecretAdapter extends RecyclerView.Adapter<SecretAdapter.ViewHolder
     public interface onSecretItemClickListener {
         void onSecretItemClick(long secretId);
 
-        void onSecretItemDelete(long secretId);
+        void onSecretItemDelete(long secretId, int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,9 +62,9 @@ public class SecretAdapter extends RecyclerView.Adapter<SecretAdapter.ViewHolder
             this.itemBinding = itemBinding;
         }
 
-        public void bind(Secret secret) {
+        public void bind(Secret secret, int position) {
             itemBinding.secretsItemText.setText(secret.getSecretTitle());
-            itemBinding.secretsItemDelete.setOnClickListener(v -> listener.onSecretItemDelete(secret.getSecretId()));
+            itemBinding.secretsItemDelete.setOnClickListener(v -> listener.onSecretItemDelete(secret.getSecretId(), position));
         }
     }
 }

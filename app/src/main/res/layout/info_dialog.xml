@@ -48,8 +48,9 @@
                 android:padding="@dimen/spacing_10"
                 android:layout_margin="@dimen/spacing_20"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/info_dialog_cancel"
-                app:layout_constraintTop_toBottomOf="@id/info_dialog_details" />
+                app:layout_constraintEnd_toStartOf="@id/info_dialog_cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/info_dialog_details"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/info_dialog_cancel"

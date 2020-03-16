@@ -21,9 +21,12 @@ import com.example.raisecure.home.views.secretInfo.SecretsInfoController;
 
 import java.util.List;
 
-public class SecretController extends BaseController implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, SecretAdapter.onSecretItemClickListener {
+public class SecretController extends BaseController implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, SecretAdapter.onSecretItemClickListener, InfoDialog.OkClickListener {
     private SecretsControllerBinding binding;
     private SecretRepo secretRepo;
+    private long secretId;
+    private int position;
+    private SecretAdapter adapter;
 
     public SecretController() {
     }
@@ -41,14 +44,16 @@ public class SecretController extends BaseController implements View.OnClickList
     protected void onViewBound(View view) {
         binding = (SecretsControllerBinding) dataBinding;
         secretRepo = new SecretRepo();
+        binding.secretsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.secretsList.setNestedScrollingEnabled(false);
+        adapter = new SecretAdapter(this);
+        binding.secretsList.setAdapter(adapter);
         setListeners();
         setUpRecycler();
     }
 
     private void setUpRecycler() {
-        binding.secretsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.secretsList.setNestedScrollingEnabled(false);
-        binding.secretsList.setAdapter(new SecretAdapter(getSecretList(), this));
+        adapter.setData(getSecretList());
     }
 
     private List<Secret> getSecretList() {
@@ -104,9 +109,22 @@ public class SecretController extends BaseController implements View.OnClickList
     }
 
     @Override
-    public void onSecretItemDelete(long secretId) {
-        new InfoDialog()
+    public void onSecretItemDelete(long secretId, int position) {
+        this.secretId = secretId;
+        this.position = position;
+        new InfoDialog(getActivity())
+                .setListener(this)
+                .setDialogTitle(getActivity().getString(R.string.delete))
+                .setDialogInfo(getActivity().getString(R.string.delete_info))
+                .hideCancelButton()
+                .show();
+    }
+
+    @Override
+    public void ok() {
         secretRepo.deleteSecrets(secretId);
-        binding.secretsList.getAdapter().notifyDataSetChanged();
+        adapter.notifyItemRemoved(position);
+        adapter.notifyDataSetChanged();
+        setUpRecycler();
     }
 }

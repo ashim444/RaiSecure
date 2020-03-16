@@ -29,5 +29,9 @@
 
     <string name="pin_set_success">Pin Set successful</string>
     <string name="pin_set_success_info">Now you can use your Pin to login</string>
+    <string name="delete_info">After delete this data will no longer be available</string>
+
+    <string name="empty_field">Empty field</string>
+    <string name="empt_field_info">Field cannot be empty. If you don\'t want to store any info. Do you wish to delete it?</string>
 
 </resources>

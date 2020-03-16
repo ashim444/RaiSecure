@@ -9,11 +9,13 @@ import com.example.raisecure.R;
 import com.example.raisecure.databinding.SecretsInfoControllerBinding;
 import com.example.raisecure.home.base.BaseController;
 import com.example.raisecure.home.data.local.SecretRepo;
+import com.example.raisecure.home.views.InfoDialog;
 
 public class SecretsInfoController extends BaseController implements View.OnClickListener {
     private SecretsInfoControllerBinding binding;
     private long secretId;
     private SecretRepo secretRepo;
+    private boolean deleteIt;
 
     protected SecretsInfoController(@Nullable Bundle args) {
         super(args);
@@ -52,8 +54,7 @@ public class SecretsInfoController extends BaseController implements View.OnClic
                 break;
 
             case R.id.secrets_info_delete:
-                secretRepo.deleteSecrets(secretId);
-                getRouter().handleBack();
+                deleteItem();
                 break;
 
             case R.id.secrets_info_save:
@@ -61,5 +62,29 @@ public class SecretsInfoController extends BaseController implements View.OnClic
                 getRouter().handleBack();
                 break;
         }
+    }
+
+    private void deleteItem() {
+        deleteIt = true;
+        secretRepo.deleteSecrets(secretId);
+        getRouter().handleBack();
+    }
+
+    @Override
+    public boolean handleBack() {
+        if(deleteIt){
+            return super.handleBack();
+        }
+        if (!binding.secretsInfoHeadingText.getText().toString().isEmpty() || !binding.secretsInfoHeadingText.getText().toString().isEmpty()) {
+            return super.handleBack();
+        } else {
+            new InfoDialog(getActivity())
+                    .setListener(this::deleteItem)
+                    .setDialogTitle(getActivity().getString(R.string.empty_field))
+                    .setDialogInfo(getActivity().getString(R.string.delete_info))
+                    .nonCancelableDialog()
+                    .show();
+        }
+        return true;
     }
 }
