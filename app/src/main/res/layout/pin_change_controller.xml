@@ -49,6 +49,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pin_heading"
                     app:layout_constraintVertical_bias="0.19999999"
+                    android:visibility="gone"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -69,7 +70,69 @@
                     app:layout_constraintBottom_toTopOf="@+id/pin_password_field"
                     app:layout_constraintEnd_toEndOf="@+id/pin_password_field"
                     app:layout_constraintStart_toStartOf="@+id/pin_password_field"
-                    app:layout_constraintTop_toBottomOf="@+id/pin_heading" />
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/pin_heading"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pin_username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_60"
+                    android:layout_marginEnd="@dimen/spacing_40"
+                    android:hint="@string/username"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/pin_heading"
+                    app:layout_constraintTop_toBottomOf="@+id/pin_heading">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pin_username_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="@dimen/text_size_14" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pin_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_20"
+                    android:layout_marginEnd="@dimen/spacing_40"
+                    android:hint="@string/password"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:endIconMode="password_toggle"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/pin_username"
+                    app:layout_constraintTop_toBottomOf="@+id/pin_username">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pin_passwordText_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/text_size_14" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pin_login_button"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_60"
+                    android:layout_marginTop="@dimen/spacing_20"
+                    android:layout_marginEnd="@dimen/spacing_40"
+                    android:layout_marginBottom="@dimen/spacing_40"
+                    android:text="@string/login"
+                    app:cornerRadius="@dimen/spacing_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/pin_username"
+                    app:layout_constraintTop_toBottomOf="@+id/pin_password" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -83,7 +146,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_arrow_forward"
-            app:tint="@color/white" />
+            android:visibility="gone"
+            app:tint="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

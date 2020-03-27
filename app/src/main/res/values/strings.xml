@@ -10,12 +10,18 @@
     <string name="enter_pin_code">Please enter your PIN code</string>
     <string name="secrets_note">Secrets Notes</string>
 
+    <string name="username_error">User name doesn\'t match</string>
+    <string name="password_error">Password doesn\'t match</string>
+
     <string name="logout">Logout</string>
     <string name="change_pin">Change pin</string>
     <string name="delete">Delete</string>
 
+    <string name="enter_pin">Enter your Pin</string>
     <string name="pin_heading">Change Pin</string>
     <string name="pin_heading_two">Confirm Pin</string>
+
+    <string name="forget_pin">Forget Pin?</string>
 
     <string name="pin_set">Set your Pin</string>
     <string name="pin_old_text">Confirm your old pin</string>
@@ -23,7 +29,7 @@
 
     <string name="pin_edit_error">Pin Cannot be Less then 4 digits</string>
     <string name="pin_confirm_error">Pin must be same as before</string>
-
+    <string name="pin_notmatch">Your pin didn\'t match</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 

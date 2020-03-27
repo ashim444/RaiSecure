@@ -9,6 +9,7 @@ import com.example.raisecure.R;
 import com.example.raisecure.databinding.SecretsInfoControllerBinding;
 import com.example.raisecure.home.base.BaseController;
 import com.example.raisecure.home.data.local.SecretRepo;
+import com.example.raisecure.home.model.entity.Secret;
 import com.example.raisecure.home.views.InfoDialog;
 
 public class SecretsInfoController extends BaseController implements View.OnClickListener {
@@ -38,6 +39,13 @@ public class SecretsInfoController extends BaseController implements View.OnClic
         binding = (SecretsInfoControllerBinding) dataBinding;
         secretRepo = new SecretRepo();
         setListener();
+        setView();
+    }
+
+    private void setView() {
+        Secret secret = secretRepo.getItem(secretId);
+        binding.secretsInfoHeadingText.setText(secret.getSecretTitle());
+        binding.secretsTextInfo.setText(secret.getSecretInfo());
     }
 
     private void setListener() {
@@ -81,7 +89,7 @@ public class SecretsInfoController extends BaseController implements View.OnClic
             new InfoDialog(getActivity())
                     .setListener(this::deleteItem)
                     .setDialogTitle(getActivity().getString(R.string.empty_field))
-                    .setDialogInfo(getActivity().getString(R.string.delete_info))
+                    .setDialogInfo(getActivity().getString(R.string.empt_field_info))
                     .nonCancelableDialog()
                     .show();
         }

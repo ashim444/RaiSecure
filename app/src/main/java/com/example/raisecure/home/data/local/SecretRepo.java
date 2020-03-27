@@ -27,8 +27,8 @@ public class SecretRepo {
         }
     }
 
-    public void getItem(long secretId) {
-        SQLite.select().from(Secret.class).where(Secret_Table.secretId.eq(secretId)).querySingle();
+    public Secret getItem(long secretId) {
+        return SQLite.select().from(Secret.class).where(Secret_Table.secretId.eq(secretId)).querySingle();
     }
 
     public List<Secret> getAllItem() {
