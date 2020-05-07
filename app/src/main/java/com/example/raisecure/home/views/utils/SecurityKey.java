@@ -30,7 +30,6 @@ public class SecurityKey {
 
         try {
             Cipher cipher = getCipher(Cipher.ENCRYPT_MODE);
-
             byte[] encrypted = cipher.doFinal(token.getBytes());
             return Base64.encodeToString(encrypted, Base64.URL_SAFE);
         } catch (GeneralSecurityException e) {

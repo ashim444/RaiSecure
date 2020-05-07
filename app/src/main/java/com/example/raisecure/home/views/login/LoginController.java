@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -251,6 +252,7 @@ public class LoginController extends BaseController implements View.OnClickListe
     }
 
     private void errorResponse(Throwable throwable) {
+        getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_LONG).show());
     }
 
     private void setUpPin() {

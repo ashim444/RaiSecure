@@ -54,6 +54,7 @@ public class KeyGenerator {
         return null;
     }
 
+    //this is the solution if the api is below 23
     static SecurityKey generateKeyPairPreM(Context context, KeyStore keyStore) {
         try {
             if (!keyStore.containsAlias(Const.KEY_ALIAS)) {
