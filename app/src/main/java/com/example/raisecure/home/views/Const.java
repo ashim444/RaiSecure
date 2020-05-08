@@ -11,4 +11,6 @@ public interface Const {
     String USER_EXIST = "userexist";
     String USER_PIN = "pin";
     String USER_PIN_EXIST = "userpinexist";
+    String TAG = "RAISECURE";
+    String APPLICATION_STATE = "application_state";
 }

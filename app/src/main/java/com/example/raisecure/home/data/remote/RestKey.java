@@ -7,6 +7,10 @@ public class RestKey {
     @SerializedName("encryption_key")
     private String key;
 
+    public RestKey(String key) {
+        this.key = key;
+    }
+
     public String getKey() {
         return key;
     }

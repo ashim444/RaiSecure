@@ -32,7 +32,7 @@ ext {
     conductorVersion = '3.0.0-rc1'
     annimonStreamVersion = '1.1.9'
     dbFlowVersion='4.2.4'
-    dbFlowVersionCipher='3.5.7'
+    dbFlowVersionCipher='4.3.0'
 }
 
 task clean(type: Delete) {
