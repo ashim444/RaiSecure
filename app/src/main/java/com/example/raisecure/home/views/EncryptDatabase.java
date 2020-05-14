@@ -52,7 +52,6 @@ public class EncryptDatabase {
             newFile.renameTo(originalFile);
         } else {
             Log.d(Const.TAG, "encryptDataBase: ");
-
         }
     }
 

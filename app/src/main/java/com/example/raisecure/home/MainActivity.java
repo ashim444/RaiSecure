@@ -45,7 +45,6 @@ public  class MainActivity extends AppCompatActivity {
 //        final String key = new RaiSaveData(this).getSavedStringData(Const.SERVER_API_KEY);
         final String key = "123124124124124124124"; // here we can use the key for encryption.
         if (!raiSaveData.getSavedBooleanData(Const.APPLICATION_STATE)) {
-
             raiSaveData.saveBooleanData(Const.APPLICATION_STATE, true);
             FlowManager.init(FlowConfig.builder(getApplicationContext())
                     .addDatabaseConfig(DatabaseConfig.builder(SecureDatabase.class)
@@ -56,7 +55,6 @@ public  class MainActivity extends AppCompatActivity {
             FlowManager.close();//this need to be close because previous database is no longer there
             openDatabaseWithKey(key);//open new database with new key
         } else {
-
             openDatabaseWithKey(key);
         }
     }

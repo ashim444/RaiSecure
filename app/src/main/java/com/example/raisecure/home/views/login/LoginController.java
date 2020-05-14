@@ -16,6 +16,7 @@ import com.example.raisecure.databinding.LoginControllerBinding;
 import com.example.raisecure.home.MainActivity;
 import com.example.raisecure.home.base.BaseController;
 import com.example.raisecure.home.data.remote.RestKey;
+import com.example.raisecure.home.networking.NetworkRequest;
 import com.example.raisecure.home.views.Const;
 import com.example.raisecure.home.views.secrets.SecretController;
 import com.example.raisecure.home.views.utils.Algorithm;
@@ -238,17 +239,17 @@ public class LoginController extends BaseController implements View.OnClickListe
 
     @SuppressLint("CheckResult")
     private void getEncryptionKey() {
-       saveApiKey(new RestKey("34eGe1Shti74g#gsy#"));
-//        NetworkRequest networkRequest = new NetworkRequest();
-//        networkRequest.getApiKey().subscribe(this::saveApiKey, this::errorResponse);
+//       saveApiKey(new RestKey("34eGe1Shti74g#gsy#"));
+        NetworkRequest networkRequest = new NetworkRequest();
+        networkRequest.getApiKey().subscribe(this::saveApiKey, this::errorResponse);
     }
 
     private void saveApiKey(RestKey restKey) {
         raiSaveData.saveStringData(Const.SERVER_API_KEY, EncryptionUtils.encrypt(getActivity(), restKey.getKey()));
         ((MainActivity) getActivity()).initDatabase(false);
         raiSaveData.saveBooleanData(Const.USER_EXIST, true);
-//        getActivity().runOnUiThread(this::setUpPin);
-        setUpPin();
+        getActivity().runOnUiThread(this::setUpPin);
+//        setUpPin();
     }
 
     private void errorResponse(Throwable throwable) {
