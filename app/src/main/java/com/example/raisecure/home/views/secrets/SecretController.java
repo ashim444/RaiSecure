@@ -43,7 +43,7 @@ public class SecretController extends BaseController implements View.OnClickList
     @Override
     protected void onViewBound(View view) {
         binding = (SecretsControllerBinding) dataBinding;
-        secretRepo = new SecretRepo();
+        secretRepo = new SecretRepo(getActivity());
         binding.secretsList.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.secretsList.setNestedScrollingEnabled(false);
         adapter = new SecretAdapter(this);

@@ -1,21 +1,14 @@
 package com.example.raisecure.home.model.entity;
 
-import com.example.raisecure.home.base.database.SecureDatabase;
-import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.PrimaryKey;
-import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-@Table(database = SecureDatabase.class)
-public class Secret extends BaseModel {
-    @PrimaryKey(autoincrement = true)
-    @Column
+
+@Entity
+public class Secret {
+    @PrimaryKey(autoGenerate = true)
     private long secretId;
-
-    @Column
     private String secretTitle;
-
-    @Column
     private String secretInfo;
 
 

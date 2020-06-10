@@ -17,6 +17,7 @@ public class SecretsInfoController extends BaseController implements View.OnClic
     private long secretId;
     private SecretRepo secretRepo;
     private boolean deleteIt;
+    private Secret secret;
 
     protected SecretsInfoController(@Nullable Bundle args) {
         super(args);
@@ -37,13 +38,13 @@ public class SecretsInfoController extends BaseController implements View.OnClic
     @Override
     protected void onViewBound(View view) {
         binding = (SecretsInfoControllerBinding) dataBinding;
-        secretRepo = new SecretRepo();
+        secretRepo = new SecretRepo(getActivity());
         setListener();
         setView();
     }
 
     private void setView() {
-        Secret secret = secretRepo.getItem(secretId);
+        secret = secretRepo.getItem(secretId);
         binding.secretsInfoHeadingText.setText(secret.getSecretTitle());
         binding.secretsTextInfo.setText(secret.getSecretInfo());
     }
@@ -66,7 +67,9 @@ public class SecretsInfoController extends BaseController implements View.OnClic
                 break;
 
             case R.id.secrets_info_save:
-                secretRepo.updateItem(secretId, binding.secretsInfoHeadingText.getText().toString(), binding.secretsTextInfo.getText().toString());
+                secret.setSecretTitle(binding.secretsInfoHeadingText.getText().toString());
+                secret.setSecretInfo(binding.secretsTextInfo.getText().toString());
+                secretRepo.updateItem(secret );
                 getRouter().handleBack();
                 break;
         }
